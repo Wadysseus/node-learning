@@ -1,0 +1,9 @@
+body {
+	background-color: antiquewhite;
+}
+
+nextButton {
+	background-color: chartreuse;
+	padding: 10px 20px;
+	border: 1px solid black;
+}
