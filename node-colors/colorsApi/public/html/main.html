@@ -1,0 +1,27 @@
+<!DOCType html>
+<html ng-app='ColorAPI'>
+	<head>
+		<title>Welcome to Color API</title>
+		<script src= "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js" type="text/javascript"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js" type="text/javascript"></script>
+		<script src="/js/app.module.js" type="text/javascript"></script>
+		<script src="/js/app.controller.home.js" type="text/javascript"></script>
+	</head>
+
+	<body ng-controller="homeController as hCtrl">
+		<h1>Welcome to Color Town</h1>
+		<h4>{{hCtrl.welcomeMessage}}</h4>
+		<form ng-submit="hCtrl.matchTheValues()">
+			Color name:
+			<input type="text" name="name" ng-model="hCtrl.userColor" placeholder="Color name!"></input>
+			Hex Value:
+			<input type="text" name="hex" ng-model="hCtrl.hexValues" placeholder="Hex value!"></input>
+			RGB:
+			<input type="text" name="rgb" ng-model="hCtrl.rgbValues" placeholder="RGB values!"></input>
+			<button type="submit">CHECK DEM VALUES</button>
+		</form>
+
+
+	</body>
+
+</html>
