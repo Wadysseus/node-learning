@@ -9,16 +9,16 @@
 	</head>
 
 	<body ng-controller="homeController as hCtrl">
-		<h1>Welcome to Color Town</h1>
+		<h1 style="color: {{hCtrl.hexValues}}">Welcome to Color Town</h1>
 		<h4>{{hCtrl.welcomeMessage}}</h4>
-		<form ng-submit="hCtrl.matchTheValues()">
+		<form>
 			Color name:
-			<input type="text" name="name" ng-model="hCtrl.userColor" placeholder="Color name!"></input>
+			<input type="text" name="name" ng-change="hCtrl.matchTheColor()" ng-model="hCtrl.userColor" placeholder="Color name!"></input>
 			Hex Value:
-			<input type="text" name="hex" ng-model="hCtrl.hexValues" placeholder="Hex value!"></input>
+			<input type="text" name="hex" ng-change="hCtrl.matchTheHex()" ng-model="hCtrl.hexValues" placeholder="Hex value!"></input>
 			RGB:
-			<input type="text" name="rgb" ng-model="hCtrl.rgbValues" placeholder="RGB values!"></input>
-			<button type="submit">CHECK DEM VALUES</button>
+			<input type="text" name="rgb" ng-change="hCtrl.matchTheRGB()" ng-model="hCtrl.rgbValues" placeholder="RGB values!"></input>
+			<!-- <button type="submit">CHECK DEM VALUES</button> -->
 		</form>
 
 
