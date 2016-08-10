@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="OakExpress">
+	
+	<head>
+		<script src="/scripts/index.js"></script>
+		<script src="/routes/pallet-api.js"></script>
+		<title>Welcome to Pallet Town</title>
+	
+	</head>
+	
+	<body ng-controller="pokeDex as dex">
+		<h1>{{dex.currentUrl}}</h1>
+		<h2>Hello Pachirisu!</h2>
+
+			<form class="form-inline">
+				<input class="form-control" type="text" ng-model-"dex.pokemonName" placeholder="Enter your Porkymans!">
+				<button class="btn btn-info" type="submit">I choose you!</button>
+			</form>
+
+			<section id="results">
+				<ul>
+					<li>{{ dex.currentPokemon.name }}</li>
+				</ul>
+				<button ng-if="dex.currentPokemon.name" class="btn btn-primary" ng-click='dex.getChain()'>Evolve {{ dex.currentPokemon.name }}</button>
+				<p ng-if="dex.currentPokemon.evolvesTo"> Evolved to {{dex.currentPokemon.evolvesTo}}!</p>
+			</section>
+	</body>
+
+</html> 

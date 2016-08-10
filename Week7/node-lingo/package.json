@@ -1,0 +1,21 @@
+{
+  "name": "lingoapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "google-translate": "^1.0.6",
+    "morgan": "^1.7.0",
+    "request": "^2.74.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}

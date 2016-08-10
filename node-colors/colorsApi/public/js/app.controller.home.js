@@ -15,7 +15,7 @@ function homeController ($http) {
 	//function that retrieves our information from the server
 	hCtrl.getTheColors = function (){
 
-		$http.get('/api/colors')
+		$http.get('')
 			.then(function(response){
 				 // console.log(response);
 				 //this forEach loop iterates over all indexes of our response data, pushing each object into our hCtrl.colorInfo array

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="TranslateAPI">
+<head>
+	<title>Translate Me</title>
+	<!-- <link rel="stylesheet" type="text/css" href="/css/main.css"> -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+	<!-- // <script src="./public/scripts/app.module.js"></script> -->
+	<script src="/public/scripts/app.controller.home.js"></script>
+</head>
+<body ng-controller ="homeController">
+	<div class="container">
+		<form ng-submit="translateString()">
+			<input type="text" ng-model="translateInput" class="form-control" placeholder="Enter text to be translated">
+			<button type="submit">Yes I am button</button>
+		</form>
+	</div>
+	<div class="container" id="translateOutput">
+	  	<p>{{translateOutput}}</p>
+	</div>
+
+	<div id="home">
+		<a href="/public/html/index.html" class="button"> Home</a>
+	</div>
+
+
+</body>
+</html>

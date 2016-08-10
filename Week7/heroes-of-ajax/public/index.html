@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="HeroesOfAjax">
+    <head>
+        <title>Heroes of AJAX!</title>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
+        <script src="/scripts/app.module.js"></script>
+        <script src="/scripts/app.controller.heroes.js"></script>
+        <script src="/scripts/app.factory.api.js"></script>
+    </head>
+    <body ng-controller="heroesController as hCtrl" class="container">
+        
+    	<form ng-submit="hCtrl.makeAHero()">
+    		<input class="form-control" ng-model="hCtrl.newHero.name" placeholder="Identity">
+    		<input class="form-control" ng-repeat="power in hCtrl.newHero.powers track by $index" ng-model="hCtrl.newHero.powers[$index]" placeholder="Powers">
+    		<input class="form-control" ng-repeat="weak in hCtrl.newHero.weaknesses track by $index" ng-model="hCtrl.newHero.weaknesses[$index]" placeholder="Weaknesses">
+    		Masked?<input class="form-control" type="checkbox" ng-model="hCtrl.newHero.masked">
+    		<input class="form-control" ng-model="hCtrl.newHero.origin" placeholder="Origin">
+
+    		<input type="submit">
+
+    		<div><button ng-click="hCtrl.pwExtra('powers')" class="btn btn-info"> Add Power </button></div>
+    		<div><button ng-click="hCtrl.pwExtra('weaknesses')" class="btn btn-warning"> Add Weakness </button></div>
+    	</form>
+
+    	<div class="row">
+    		<div class="col-xs-12">
+            	<h2>Our Heroes : </h2>
+        	</div>
+    		<div ng-repeat="hero in hCtrl.heroList" class="col-xs-12">
+    			<strong>{{hero.name}}</strong>
+    			<p><em>Powers: </em>{{hero.powers}}</p>
+    			<p><em>Weaknesses: </em>{{hero.weaknesses}}</p>
+    			<p><em>Secret Identity? </em>{{hero.masked}}</p>
+    			<p><em>Origin: </em>{{hero.origin}}</p>
+    		</div>
+    	</div>
+
+    </body>
+</html>
