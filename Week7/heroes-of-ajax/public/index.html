@@ -17,11 +17,28 @@
     		Masked?<input class="form-control" type="checkbox" ng-model="hCtrl.newHero.masked">
     		<input class="form-control" ng-model="hCtrl.newHero.origin" placeholder="Origin">
 
-    		<input type="submit">
+            <select 
+            ng-model="hCtrl.newHero.headquarters" class="form-control" 
+            ng-options="hq._id as hq.name for hq in hCtrl.hqList">
+            <!-- ng-options : VALUE as DISPLAY for OBJECT in LIST -->
+                <option value="" selected disabled>Choose HQ</option>
+            </select>
+    		
+            <input type="submit">
 
     		<div><button ng-click="hCtrl.pwExtra('powers')" class="btn btn-info"> Add Power </button></div>
     		<div><button ng-click="hCtrl.pwExtra('weaknesses')" class="btn btn-warning"> Add Weakness </button></div>
     	</form>
+
+        <h1>Headquarters Form</h1>
+
+        <form ng-sbumit=>
+            <input class="form-control" ng-model="hCtrl.newHq.name" placeholder="name">
+            <input class="form-control" ng-model="hCtrl.newHq.butler" placeholder="butler">
+            <input class="form-control" ng-model="hCtrl.newHq.moatType" placeholder="moat type">
+            <input class="form-control" ng-model="hCtrl.newHq.amenities" placeholder="amenities">
+            <div ng-click="hCtrl.addAmenity()" class="btn btn-primary">Add Amenity</div>
+        </form>
 
     	<div class="row">
     		<div class="col-xs-12">
