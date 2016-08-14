@@ -1,0 +1,27 @@
+html {
+	background-color: antiquewhite;
+}
+
+body {
+	width: 1350px;
+	background-color: burlywood;
+	margin: 0 auto;
+}
+
+#formDiv {
+	background-color: #ab8443;
+	width: 650px;
+	margin: 0 auto;
+}
+.form-control {
+	margin-top: 10px;
+}
+
+td{
+	border: 1px solid black;
+	margin: 1px;
+}
+
+table {
+	margin: 0 auto;
+}

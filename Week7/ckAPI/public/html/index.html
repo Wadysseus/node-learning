@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="CopApp">
+<head>
+	<title>ckAPI</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+	<script src="/scripts/app.controller.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="/styles/main.css">
+</head>
+<body ng-controller="copController as cCtrl">
+<h1>The truth is out there</h1>
+<p>And so is Frank Zappa</p>
+
+<button type="button" ng-click="cCtrl.dumpInfo()">Yes I am button</button>
+<div id="formDiv">
+	<input class="form-control" placeholder="Enter city" ng-model="search.city">
+	<input class="form-control" placeholder="Enter state" ng-model="search.state">
+	<input class="form-control" placeholder="Enter cause of death" ng-model="search.cause">
+	<input class="form-control" placeholder="Enter race" ng-model="search.race">
+</div>
+<table id="infoTable">
+	<tr><th>Name</th><th>Cause</th><th>Location</th><th>Race</th></tr>
+	<tr ng-repeat="names in cCtrl.copKillInfo | filter:search">
+		<td>{{names.name}}</td>
+		<td>{{names.cause}}</td>
+		<td>{{names.city}}, {{names.state}}</td>
+		<td>{{names.race}}</td>
+	</tr>
+</table>
+
+</body>
+</html>

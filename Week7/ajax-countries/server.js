@@ -12,14 +12,17 @@ var express    = require('express'),
     logger     = require('morgan'),
     bodyParser = require('body-parser'),
     mongoose   = require('mongoose'),
-    // Routes     = require('./routes'),
+    Routes     = require('./routes'),
     path       = require('path'),
     port       = process.env.PORT || 8008,
+    countries  = require('./models/countriesModel.json'),
+    ejs        = require('ejs'),
     app        = express();
 
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes(app);
+app.set('view engine', 'html'); // private view files
+app.engine('html', ejs.renderFile) // res.render
 
 // make sure you have mongod running!
 // connection string: 'mongodb://localhost/<db-name>'
@@ -33,8 +36,10 @@ mongoose.connect('mongodb://localhost/countryList', (err) => {
 });
 
 app.get('/countries', function(req, res){
-    res.send('TEST')
+    res.send(countries)
 })
+
+Routes(app);
 
 app.listen(port, (err) => {
     if(err){
