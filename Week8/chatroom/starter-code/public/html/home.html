@@ -1,0 +1,25 @@
+<html ng-app="ChatApp">
+
+<head>
+	<link rel='stylesheet' href='/stylesheets/style.css'>
+	<title>Chatroom</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<h1>Buck Wild Chatroom</h1>
+		</div>
+		<div class="row">
+			<div id="room" class="col-xs-10" ng-repeat="message in cTroll.chatLog"></div>
+			<div id="users" class="col-xs-2"></div>
+		</div>
+		<div class="row">
+			<textarea id="message-input" type="text" placeholder="send a message" class="form-control col-xs-12"
+			ng-keyup="$event.which === 13">
+		</textarea>
+		</div>
+	</div>
+	<script src="/javascripts/main.js"></script>
+</body>
+</html>

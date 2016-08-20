@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Burritofy">
+
+<head>
+    <title>Burrito Me Crazy</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
+    <link rel="stylesheet" href="../css/order.css">
+    <script src="../js/main.js" type="text/javascript"></script>
+
+
+    <body ng-controller="BurritoController as burr">
+        <div class="nav-bar">
+            <ul>
+                <li><a class="active" href="./home.html">Home</a></li>
+            </ul>
+        </div>
+<!-- main page that has choice of delivery or pick up -->
+        <div class="intro-header">
+            <div class="container" id="deliver-pickup">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="intro-message">
+
+                            <h3>Hillary Clinton announced she's running for president. Yesterday in Ohio, Hillary popped into a <b>Burritofy</b> and she ordered a burrito bowl with chips and salsa. And on her way out she said, 'That locks down the Hispanic vote.'</h3>
+                            <hr class="intro-divider">
+                            <ul class="list-inline intro-social-buttons">
+                                <li>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deliveryModal"><span class="glyphicon glyphicon-fire"></span> Delivery</button>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#pickupModal"><span class="glyphicon glyphicon-fire"></span> Pick-Up</button>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- this is the modal that displays when the delivery option is selected   -->
+        <div class="modal fade bs-example-modal-lg" id="deliveryModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <form class="customerInfo">
+                        <h2>Enter Info:</h2>
+                        <ul>
+                            <li>
+                                <!-- <span class="input-group-addon" id="sizing-addon1">@</span> -->
+                                <input class="infoFields form-control" ng-model="burr.newOrder.email" type="email" name="email" placeholder="Enter e-mail" />
+                            </li>
+                            <li>
+                                <input class="infoFields form-control" ng-model="burr.newOrder.firstName" type="text" name="firstName" placeholder="Enter first name" />
+                            </li>
+                            <li>
+                                <input class="infoFields form-control" ng-model="burr.newOrder.lastName" type="text" name="lastName" placeholder="Enter last name" />
+                            </li>
+                            <li>
+                                <input class="infoFields form-control" ng-model="burr.newOrder.streetAddress" type="text" name="streetAddress" placeholder="Enter street address" />
+                            </li>
+                            <li>
+                                <input class="infoFields form-control" ng-model="burr.newOrder.city" type="text" name="city" placeholder="Enter city" />
+                            </li>
+                            <li>
+                                <input class="infoFields form-control" ng-model="burr.newOrder.zipCode" type="text" name="zipCode" placeholder="Enter zip code" />
+                            </li>
+                            <li>
+                                <input class="infoFields form-control" ng-model="burr.newOrder.phone"  type="text" name="phone" placeholder="Enter phone" />
+                            </li>
+                        </ul>
+                        <button type="button" class="btn btn-success" id="hideMe" ng-model="burr.newOrder.burrito"  data-toggle="modal" data-target="#burritoPicker"> Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+<!-- this is the modal that is selecter when pick up is selected   -->
+        <div class="modal fade bs-example-modal-lg" id="pickupModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <form class="customerInfo">
+                        <h2>Enter Info:</h2>
+                        <ul>
+                            <li>
+                                <!-- <span class="input-group-addon" id="sizing-addon1">@</span> -->
+                                <input class="infoFields form-control" type="email" name="email" placeholder="Enter e-mail" />
+                            </li>
+                            <li>
+                                <input class="infoFields form-control" type="text" name="firstName" placeholder="Enter first name" />
+                            </li>
+                            <li>
+                                <input class="infoFields form-control" type="text" name="lastName" placeholder="Enter last name" />
+                            </li>
+                            <li>
+                                <input class="infoFields form-control" type="text" name="phone" placeholder="Enter phone" />
+                            </li>
+                        </ul>
+                        <button type="button" class="btn btn-success "  data-toggle="modal" data-target="#burritoPicker"> Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+<!-- once the information is submited from delivery/pick up, this modal will populate with burrito options -->
+        <div class="modal fade bs-example-modal-lg" id="burritoPicker" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <form class="customerInfo">
+                        <h2>Burrito Options:</h2>
+                        <ul>
+                          <li><b>1: The Burrito to Conquer all Burritos </b> <br /> Ingredients:Flour Tortilla, Chicken, Steak, Pork, White Rice, Black Beans, Pinto Beans, Onions, Peppers, Corn salsa, Pico de Gallo, Mild salsa, Medium salsa , Hot salsa, Salsa verde, Cheese, Sour Cream, Guac, Lettuce</li>
+                          <li><b>2: The Meat Tornado  </b> <br /> Ingredients: 2X Flour Tortilla, 2x Chicken, 2x Steak, 2x Pork, White Rice,Pinto Beans, Cheese, Sour Cream</li>
+                          <li><b>3: The CrossFit Disaster</b> <br /> Ingredients:Wheat Tortilla, Chicken, Brown Rice, Onions, Peppers, Corn salsa, Pico de Gallo, 4x Lettuce, Guac</li>
+                          <li><b>4: The Korean Standard</b> <br /> Ingredients:Rice  Tortilla, Short Ribs, Kimchi</li>
+                          <li><b>5: The Patti Mayonnaise </b> <br /> Ingredients:Flour Torilla, Chicken, Mayo, Lettuce, Corn Salsa, Pico de Gallo </li>
+
+                        </ul>
+
+                        <form>
+                        <select class="form-control">
+                          <option>1: The Burrito to Conquer all Burritos </option>
+                          <option>2: The Meat Tornado </option>
+                          <option>3: The CrossFit Disaster</option>
+                          <option>4: The Korean Standard</option>
+                          <option>5: The Patti Mayonnaise </option>
+                        </select>
+                      </form>
+                        <ul>
+                          <li></li>
+                        </ul>
+
+
+                    </form>
+                    <a class="btn btn-success addBtn"><span class="glyphicon glyphicon-plus"></span>ADD</button>
+                    <a href="./bselect.html" class="btn btn-warning btn-md" style="float:right;"><span class="glyphicon glyphicon-ok"></span> Submit</a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+</body>
+
+</html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status Help

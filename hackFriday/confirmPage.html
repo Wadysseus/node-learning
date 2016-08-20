@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Burritofy">
+
+<head>
+    <title>Burrito Me Crazy</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
+    <link rel="stylesheet" href="../css/order.css">
+    <script src="../js/main.js" type="text/javascript"></script>
+
+
+    <body ng-controller="BurritoController as burr">
+        <div class="nav-bar">
+            <ul>
+                <li><a class="active" href="./home.html">Home</a></li>
+            </ul>
+        </div>
+<!-- main page that has choice of delivery or pick up -->
+        <div class="intro-header">
+            <div class="container" id="deliver-pickup">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="intro-message">
+
+                            <h3>Hillary Clinton announced she's running for president. Yesterday in Ohio, Hillary popped into a <b>Burritofy</b> and she ordered a burrito bowl with chips and salsa. And on her way out she said, 'That locks down the Hispanic vote.'</h3>
+
+                            <div class="orderConfirmBox">
+                                <p ng-repeat="order in bCtrl.orders"> </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+</body>
+
+</html>
