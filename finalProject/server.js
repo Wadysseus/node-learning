@@ -25,6 +25,23 @@ mongoose.connect('mongodb://localhost/crAPI', (error) => {
 
 Routes(app);
 
+// // Here we are pulling in the color data from the JSON file
+// app.get('/api/colors', function(req, res){
+// 	//1 - use REQUEST to grab Color info
+// 	request('https://cdn.rawgit.com/metaraine/swatch/74580660c9229541622bbf1fd4198618d9f677e5/webcolors.json',
+// 	 	function(err, response, body){  
+// 			// console.log(response.body);
+// 			// console.log(typeof response.body)
+
+// 			//data is the body, which ignores the status, statusText, config, etc.
+// 			var data = response.body;
+// 			//json parses this string response into an object, collection of arrays
+// 			var json = JSON.parse(data);
+// 			// we send the data at the end in its new object form
+// 			res.send(json);
+// 		})
+// });
+
 app.listen(port, (err)=>{
 	if(err){
 		console.error(err)

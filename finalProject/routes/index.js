@@ -11,6 +11,10 @@ module.exports = (app) => {
 		res.sendFile("about.html", {root: "./public/html"})
 	});
 
+		app.get('/profile', (req,res) => {
+		res.sendFile("profileHome.html", {root: "./public/html"})
+	});
+
     // Hero Routes
     // app.get('/api/heroes', heroCtrl.get);
     // app.post('/api/heroes', heroCtrl.upsert);
