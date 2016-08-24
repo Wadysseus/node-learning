@@ -1,15 +1,15 @@
-// Heroes Controller
+// Characters Controller
 
 // Require the model so we can access the collection
-var Hero = require('../models/hero');
+var PC = require('../models/pc');
 
 module.exports = {
     get : (req, res) => {
         // Read
-        Hero.find({})
-            .populate('campaigns') // Property name of a Hero doc we want to populate
-            .exec(function(err, heroes){
-                res.json(heroes);
+        PC.find({})
+            .populate('campaigns') // Property name of a PC doc we want to populate
+            .exec(function(err, pcs){
+                res.json(pcs);
             }); // exec gives us a place to pass in the callback function find used to take.  Like a 'then' method for mongoose
     },
 
@@ -20,14 +20,14 @@ module.exports = {
         }
         else {
             // No id in the url, create a new document
-            var newHero = new Hero(req.body);
+            var newPC = new PC(req.body);
 
-            // Save hero to DB
-            newHero.save(function(err, hero){
+            // Save character to DB
+            newPC.save(function(err, pc){
                 if(err){
                     return res.json(err);
                 }
-                res.json(hero);
+                res.json(pc);
             });
         }
 

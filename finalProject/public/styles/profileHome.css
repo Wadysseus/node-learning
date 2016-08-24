@@ -9,7 +9,11 @@ ul {
 
 /*css for index.html*/
 .nav-bar{
-  border:3px #555 solid;
+  /*border:3px #555 solid;*/    
+  border-top: outset #555 2px;
+      border-bottom: outset #555 2px;
+    border-left: outset #555 2px;
+    border-right: outset #555 2px;   
 }
 .nav-bar ul {
     list-style-type: none;
@@ -29,8 +33,16 @@ ul {
     text-decoration: none;
 }
 .nav-bar li a:hover {
-    /*background-color: #E5B528;*/
     background-color: #CA8144;
+
+}
+
+.nav-bar ul li:last-of-type{
+    float: right;
+}
+
+#logoutLink {
+    float: right;
 }
 
 .active {
@@ -51,7 +63,7 @@ ul {
     position: relative;
     padding-top: 20%;
     padding-bottom: 20%;
-
+}
 
 /*.intro-message h1 {
     margin: 0;
@@ -70,11 +82,15 @@ ul {
     text-shadow: 2px 2px 3px black;
 }
 
-.profileLinks{
-    color: white;
+.profileLinks li{
+    padding-bottom: 3px;
 }
 
-.profileLinks a:hover{
-    color: #CA8144;
-    text-decoration: none;
+.profileLinks button{
+    opacity: 0.9;
+}
+
+.profileLinks button:hover{
+    background-color: #CA8144;
+    opacity: 0.65   ;
 }
