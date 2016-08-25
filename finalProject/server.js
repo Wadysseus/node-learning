@@ -8,7 +8,9 @@ var express = require('express'),
 	port = process.env.PORT || 1337,
 	path = require('path'),
 	ejs = require('ejs'),
-    user = require('./models/user.js'),
+    flash = require('connect-flash'),
+    cookieParser = require('cookie-parser'),
+    User = require('./models/user.js'),
 	Routes = require('./routes/index.js');
 
 app.use(express.static(path.join(__dirname,'/public')));
@@ -42,6 +44,7 @@ app.use( app.get('session') ); //W Ensuring that the app will always use 'sessio
 
 app.use( passport.initialize() ); // Hooks into app
 app.use( passport.session() ); // Hooks into sessions
+app.use (flash());
 
 // cookies are strings. strings are "SERIAL" data.
 passport.serializeUser(function(user, done) {
@@ -64,17 +67,21 @@ passport.use(new GoogleStrategy({
     console.log('PROFILE', profile);
 
     // Attempt to see if the user exists already in the DB
-    user.find({googleid : profile.id}, function(err, foundUser){
-
+    User.find({googleid : profile.id}, function(err, foundUser){
+        console.log(1)
         if(!foundUser[0]){
-            var newOne =  new user({
+            console.log(2)
+            var newOne =  new User({
                 googleid : profile.id,
-                name     : profile.name
+                name     : profile.name.givenName
             })
 
             newOne.save(function(err, savedUser){
-                // User didn't exist before, now that they do, send them to pasport
-                cb(null, savedUser)
+                // User didn't exist before, now that they do, send them to passport
+                // var savedUser = {googleid : 'butts', name : 'biggerButts', id: 123};
+                cb(null, savedUser);
+                console.log(3, savedUser)
+                console.log('Yes, this is error', err)
             })
         }
         else{
@@ -83,7 +90,6 @@ passport.use(new GoogleStrategy({
         }
 
     })
-
 
   }
 ));

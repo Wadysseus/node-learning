@@ -51,13 +51,13 @@ ul {
     position: relative;
     padding-top: 20%;
     padding-bottom: 20%;
+}
 
-
-/*.intro-message h1 {
+.intro-message h1 {
     margin: 0;
     text-shadow: 2px 2px 3px black;
     font-size: 7em;
-}*/
+}
 
 .intro-divider {
     width: 60% ;

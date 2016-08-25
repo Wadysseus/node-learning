@@ -1,5 +1,6 @@
 var pcCtrl = require('./pcs');
 var cCtrl   = require('./campaigns');
+var flash = require('connect-flash');
 
 var passport = require('passport');
 
@@ -10,7 +11,11 @@ module.exports = (app) => {
     passport.authenticate('google', { scope: ['profile'] })); // Route that takes you to the google sign in page
 
     app.get('/auth/google/callback', 
-    passport.authenticate('google', { failureRedirect: '/login' }),
+    passport.authenticate('google', {   failWithError: true,
+                                        failureFlash: true,
+                                        failureRedirect: '/loginFail',
+                                        
+     }),  // 
     function(req, res) {
         // Successful authentication, redirect home.
         res.redirect('/profile');
@@ -18,19 +23,19 @@ module.exports = (app) => {
 
     // -=-===-=--=-===-=--=-===-=-DREW CODE TO FIGGER OUT TOMORROW-=-===-=--=-===-=--=-===-=-
 
-    app.isAuthenticated = function(req, res, next){
-    // If the current user is logged in...
-    if(req.isAuthenticated()){
-        return next();
-    }
-    // If not, redirect to login
-    console.log('ur google asplode')
-    res.redirect('/login');
-    }
+    // app.isAuthenticated = function(req, res, next){
+    // // If the current user is logged in...
+    // if(req.isAuthenticated()){
+    //     return next();
+    // }
+    // // If not, redirect to login
+    // console.log('ur google asplode')
+    // res.redirect('/login');
+    // }
 
-    app.get('/profile', app.isAuthenticated, function(req, res){
-    res.sendFile('/profileHome.html', {root: './hidden'})
-    })
+    // app.get('/profile', app.isAuthenticated, function(req, res){
+    // res.sendFile('/profileHome.html', {root: './hidden'})
+    // })
 
     // -=-===-=--=-===-=--=-===-=-END OF DREW CODE-=-===-=--=-===-=--=-===-=-
 
@@ -46,9 +51,15 @@ module.exports = (app) => {
 		res.sendFile("about.html", {root: "./public/html"})
 	});
 
-		app.get('/profile', (req,res) => {
+	app.get('/profile', (req,res) => {
 		res.sendFile("profileHome.html", {root: "./public/html"})
 	});
+
+    app.get('/loginFail', function (req, res) {
+        console.error('Flash console error', req.flash('info'));
+        res.render('login', {messages : req.flash('info') });
+
+    })
 
     // PC Routes
     app.get('/api/pcs', pcCtrl.get);

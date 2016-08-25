@@ -86,11 +86,11 @@ ul {
     padding-bottom: 3px;
 }
 
-.profileLinks button{
+.profileLinks a{
     opacity: 0.9;
 }
 
-.profileLinks button:hover{
+.profileLinks a:hover{
     background-color: #CA8144;
     opacity: 0.65   ;
 }

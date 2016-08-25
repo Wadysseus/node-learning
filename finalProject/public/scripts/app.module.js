@@ -1,20 +1,29 @@
-angular.module('crAPI', []);
+angular.module('crAPI', ['ngRoute'])
+
+
 	.config(function($routeProvider) {
-	    $routeProvider.when( '/profile', {
-	      templateUrl: '~/views/base.html'
+	    $routeProvider.when( '/', {
+	      templateUrl: '/partials/base.html'
 	    });
 	    $routeProvider.when( '/create', {
-	      templateUrl: '~/views/createHome.html'
+	      templateUrl: '/partials/createHome.html'
 	    })
 	    $routeProvider.when( '/createCharacter', {
-	      templateUrl: '~/views/createCharacter.html'
+	      templateUrl: '/partials/createCharacter.html'
 	    })
 	    $routeProvider.when( '/createCampaign', {
-	      templateUrl: '~/views/createCampaign.html'
+	      templateUrl: '/partials/createCampaign.html'
+	    })
+		$routeProvider.when( '/roster', {
+	      templateUrl: '/partials/roster.html'
+	    })
+		$routeProvider.when( '/campaignList', {
+	      templateUrl: '/partials/campaignList.html'
 	    })
 	    // default route //
 	    $routeProvider
 	      .otherwise({
-	        redirectTo: '/profile'
+	        redirectTo: '/'
 	      });
+	      console.log('crAPI module loaded, human.')
 	});
