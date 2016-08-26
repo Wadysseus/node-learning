@@ -24,7 +24,7 @@ module.exports = {
         }
         else{
             // Create
-            var newCampaign = new campaign(req.body);
+            var newCampaign = new Campaign(req.body);
             newCampaign.save(function(err, doc){
                 // res.json({success : 'Campaign successfully added!'});
                 res.json(doc);

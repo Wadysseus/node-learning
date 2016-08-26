@@ -1,6 +1,7 @@
 var pcCtrl = require('./pcs');
-var cCtrl   = require('./campaigns');
-var flash = require('connect-flash');
+var cCtrl  = require('./campaigns');
+var uCtrl  = require('./users');
+var flash  = require('connect-flash');
 
 var passport = require('passport');
 
@@ -18,26 +19,8 @@ module.exports = (app) => {
      }),  // 
     function(req, res) {
         // Successful authentication, redirect home.
-        res.redirect('/profile');
+        res.redirect('/profile'); //res.redirect('/profile/:id');
     }); // Where google redirects you when the user is done signing in
-
-    // -=-===-=--=-===-=--=-===-=-DREW CODE TO FIGGER OUT TOMORROW-=-===-=--=-===-=--=-===-=-
-
-    // app.isAuthenticated = function(req, res, next){
-    // // If the current user is logged in...
-    // if(req.isAuthenticated()){
-    //     return next();
-    // }
-    // // If not, redirect to login
-    // console.log('ur google asplode')
-    // res.redirect('/login');
-    // }
-
-    // app.get('/profile', app.isAuthenticated, function(req, res){
-    // res.sendFile('/profileHome.html', {root: './hidden'})
-    // })
-
-    // -=-===-=--=-===-=--=-===-=-END OF DREW CODE-=-===-=--=-===-=--=-===-=-
 
 	app.get('/', (req,res) => {
 		res.sendFile("index.html", {root: "./public/html"})
@@ -47,6 +30,12 @@ module.exports = (app) => {
 		res.sendFile("login.html", {root: "./public/html"})
 	});
 
+    app.get('/logout', (req,res) => {
+        console.log("logged out!");
+        req.logout();
+        res.redirect('/');
+    });
+
 	app.get('/about', (req,res) => {
 		res.sendFile("about.html", {root: "./public/html"})
 	});
@@ -55,21 +44,45 @@ module.exports = (app) => {
 		res.sendFile("profileHome.html", {root: "./public/html"})
 	});
 
+    // app.get('/profile/:id', uCtrl.userID);
+
     app.get('/loginFail', function (req, res) {
         console.error('Flash console error', req.flash('info'));
         res.render('login', {messages : req.flash('info') });
 
     })
 
+
+
     // PC Routes
     app.get('/api/pcs', pcCtrl.get);
     app.post('/api/pcs', pcCtrl.upsert);
     
-    // // Campaign Routes
+    // Campaign Routes
     app.get('/api/campaigns', cCtrl.get); // Find Many
     app.get('/api/campaigns/:id', cCtrl.get); // Find One
     app.post('/api/campaigns', cCtrl.upsert); // Create
     app.post('/api/campaigns/:id', cCtrl.upsert); // Update
     
-
+    // User Routes
+    // app.get('/api/user/', uCtrl.get);
+    // app.get('/api/user/:id', uCtrl.get);
 }
+
+    // -=-===-=--=-===-=--=-===-=-DREW CODE TO FIGGER OUT?-=-===-=--=-===-=--=-===-=-
+
+        // app.isAuthenticated = function(req, res, next){
+        // // If the current user is logged in...
+        // if(req.isAuthenticated()){
+        //     return next();
+        // }
+        // // If not, redirect to login
+        // console.log('ur google asplode')
+        // res.redirect('/login');
+        // }
+
+        // app.get('/profile', app.isAuthenticated, function(req, res){
+        // res.sendFile('/profileHome.html', {root: './hidden'})
+        // })
+
+    // -=-===-=--=-===-=--=-===-=-END OF DREW CODE-=-===-=--=-===-=--=-===-=-

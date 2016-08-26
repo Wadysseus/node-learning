@@ -5,14 +5,19 @@ angular.module('crAPI')
 
 	function apiFactory ($http) {
 
-	    function getPCs () {
+	    function retrievePCs () {
+	    	// console.log('factory retrievePCs function online')
 	        return $http.get('/api/pcs')
 	    }
 	    function createPC (pcData) {
 	        return $http.post('/api/pcs', pcData)
 	    }
 
-	    function getCampaigns (campaignID){
+	    function retrieveCampaigns (){
+	        return $http.get('/api/campaigns')
+	    }
+
+	    function findOneCampaign (campaignID){
 	        var param = campaignID ? `/${campaignID}` : '';
 
 	        // var param = '';
@@ -24,15 +29,20 @@ angular.module('crAPI')
 	        return $http.get(`/api/campaigns${param}`)
 	        // '/api/hqs' + param
 	    }
+
 	    function createCampaign (campaignData){
 	        return $http.post('/api/campaigns', campaignData)
 	    }
 
+	    function retrieveUser (){
+	    	return $http.get('/api/user')
+	    }
+
 	    // This return value is exactly what we gain access to in the controller
 	    return {
-	        getPCs : getPCs,
+	        retrievePCs : retrievePCs,
 	        createPC: createPC,
-	        getCampaigns    : getCampaigns,
+	        retrieveCampaigns    : retrieveCampaigns,
 	        createCampaign  : createCampaign,
 	    }
 

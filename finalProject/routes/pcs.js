@@ -7,7 +7,7 @@ module.exports = {
     get : (req, res) => {
         // Read
         PC.find({})
-            .populate('campaigns') // Property name of a PC doc we want to populate
+            .populate('pcs') // Property name of a PC doc we want to populate
             .exec(function(err, pcs){
                 res.json(pcs);
             }); // exec gives us a place to pass in the callback function find used to take.  Like a 'then' method for mongoose

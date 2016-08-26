@@ -7,11 +7,16 @@ module.exports = {
     get : (req, res) => {
         // Read
         User.find({})
-            .populate('campaigns') // Property name of a PC doc we want to populate
+            .populate('users') // Property name of a PC doc we want to populate
             .exec(function(err, users){
                 res.json(users);
             }); // exec gives us a place to pass in the callback function find used to take.  Like a 'then' method for mongoose
     },
+
+    // userID : (req, res) => {
+    //     var results = User.findUser( req.params.id );
+    //     res.json( results.length > 0 ? results : 'User not found !| BEEP BOOP' );
+    // },
 
     upsert : (req, res) =>{
         // Create / Update
@@ -45,3 +50,15 @@ module.exports = {
 // R - Read   - querying, pulling things out of the db
 // U - Update - modifying an existing document
 // D - Delete - removes a document
+
+
+    // genre : function(req, res){
+    //     // How do we get books of one genre using paramaterized URLs?
+        
+    //     // github.com/refactoru
+    //     // github.com/devaio
+    //     // github.com/*
+    //     // console.log('the REAL params', req.params)
+    //     var results = Library.findGenre( req.params.genre );
+    //     res.json( results.length > 0 ? results : 'No Books :(' );
+    // },

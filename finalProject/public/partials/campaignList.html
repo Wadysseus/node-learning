@@ -7,15 +7,23 @@
                             <h3>(c)haracter (r)ecord API</h3>
                             <hr class="intro-divider" />
                                 <div>
+                                    <section ng-controller="campaignController as cCtrl" ng-init="cCtrl.listCampaigns()">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <h1>Campaign Directory : </h1>
+                                                </div>
+                                                <div ng-repeat="campaign in cCtrl.campaignList track by $index" class="col-xs-12">
+
+                                                    <p>~Campaign {{$index}}~</p>
+                                                    <a type="button" class="btn btn-sm btn-warning profileLinks" href="#">{{ campaign.name }} {{ campaign.system }} {{ campaign.setting }} {{ campaign.schedule }}</a>
+
+                                                     <!-- Can put alt text in here once I change these to portrait <img>s.  -->
+                                                </div>
+                                            </div>
+                                    </section>
                                     <ul class="profileLinks">
 
-                                        <li>
-                                            <h2>Yes this is campaigns</h2>
-                                        </li>
-                                        <li>
-                                           This should be an ng-repeat that does something like {{campaign.name}}
-                                        </li>
-                                        <li>
+                                        <li style="padding-top: 10px">
                                             <a type="button" class="btn btn-lg btn-warning profileLinks" href="#/"> Back </a>
                                         </li>
                                     </ul>
