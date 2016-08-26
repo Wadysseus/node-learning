@@ -57,6 +57,7 @@ module.exports = (app) => {
     // PC Routes
     app.get('/api/pcs', pcCtrl.get);
     app.post('/api/pcs', pcCtrl.upsert);
+    app.get('/api/pcs/:id', pcCtrl.get); // Find One
     
     // Campaign Routes
     app.get('/api/campaigns', cCtrl.get); // Find Many

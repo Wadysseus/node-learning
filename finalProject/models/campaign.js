@@ -11,6 +11,10 @@ var campaignSchema = mongoose.Schema({
     DM: 		{
     		type: mongoose.Schema.ObjectId,
     		ref : 'user'
+    },
+    players: 		{
+    		type: mongoose.Schema.ObjectId,
+    		ref : 'user'
     }
 });
 

@@ -6,11 +6,19 @@ var PC = require('../models/pc');
 module.exports = {
     get : (req, res) => {
         // Read
+        if(req.params.id){
+            // Find One
+            PC.findOne({ _id : req.params.id }, function(err, pc){
+                console.log(pc);
+                res.json(pc);
+            });
+        } else {
         PC.find({})
             .populate('pcs') // Property name of a PC doc we want to populate
             .exec(function(err, pcs){
                 res.json(pcs);
             }); // exec gives us a place to pass in the callback function find used to take.  Like a 'then' method for mongoose
+        }
     },
 
     upsert : (req, res) =>{
@@ -21,7 +29,8 @@ module.exports = {
         else {
             // No id in the url, create a new document
             var newPC = new PC(req.body);
-
+            console.log('Yes this is req.session.passport', req.session.passport)
+            newPC.player = req.user._id;
             // Save character to DB
             newPC.save(function(err, pc){
                 if(err){

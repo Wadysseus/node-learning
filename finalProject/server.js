@@ -15,9 +15,11 @@ var express = require('express'),
 
 app.use(express.static(path.join(__dirname,'/public')));
 // app.use(express.static(__dirname + '/public'));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(logger('dev'));
+
 
 //W connecting to my crAPI DB
 mongoose.connect('mongodb://localhost/crAPI', (error) => {
@@ -67,7 +69,7 @@ passport.use(new GoogleStrategy({
     console.log('PROFILE', profile);
 
     // Attempt to see if the user exists already in the DB
-    User.findOne({googleid : profile.id}, function(err, foundUser){
+    User.findOne({ googleid : profile.id }, function(err, foundUser){
         console.log(1)
         if(!foundUser){
             console.log(2)

@@ -3,12 +3,12 @@ angular.module('crAPI')
 	.controller('campaignController', campaignController)
 	.controller('userController', userController);
 
-pcController.$inject = ['apiFactory'];
-campaignController.$inject = ['apiFactory'];
+pcController.$inject = ['apiFactory', '$location'];
+campaignController.$inject = ['apiFactory', '$location'];
 userController.$inject = ['apiFactory'];
 
 // Start of pcController
-	function pcController (apiFactory) {
+	function pcController (apiFactory, $location) {
 		var pcCtrl = this;
 		console.log('pcController online, human.');
 
@@ -17,7 +17,9 @@ userController.$inject = ['apiFactory'];
 				.createPC(pcCtrl.newPC)
 				.then(function(response){
 					console.log(response);
+					
 				});
+				$location.url("/roster.html");
 		}
 
 		// pcCtrl.talkToMe = () => {
@@ -39,7 +41,7 @@ userController.$inject = ['apiFactory'];
 	}
 // End of pcController 
 
-	function campaignController (apiFactory) {
+	function campaignController (apiFactory, $location) {
 		var cCtrl = this;
 		console.log('campaignController online, human.');
 
@@ -48,7 +50,9 @@ userController.$inject = ['apiFactory'];
 				.createCampaign(cCtrl.newCampaign)
 				.then(function(response){
 					console.log(response);
+					
 				});
+				$location.url("/campaignList.html");
 		}
 
 		cCtrl.listCampaigns = () => {
