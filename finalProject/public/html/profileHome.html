@@ -12,17 +12,19 @@
     <link rel="stylesheet" href="../styles/profileHome.css">
     <script src="https://use.fontawesome.com/4c8287bdf1.js"></script>
 </head>
-<header ng-controller-"userController as uCtrl" ng-init="uCtrl.pullUser()">
+
+<body>
+<header ng-controller="userController as uCtrl" >
         <div class="nav-bar">
             <ul>
+                <!-- ng-init="uCtrl.pullUser()" -->
                 <li><a class="" href="/">Home</a></li>
-                <li><a class="active" href="#">{{user.name}}</a></li>
+                <li><a class="active" href="#">{{uCtrl.currentUser.name}}</a></li>
                 <li><a class="" href="/about">About</a></li>
                 <li><a id="logoutLink" href="/logout">Logout</a></li>
             </ul>
         </div>
 </header>
-<body>
     <div ng-view=''>
 
     </div>

@@ -5,6 +5,7 @@ angular.module('crAPI')
 
 pcController.$inject = ['apiFactory'];
 campaignController.$inject = ['apiFactory'];
+userController.$inject = ['apiFactory'];
 
 // Start of pcController
 	function pcController (apiFactory) {
@@ -64,7 +65,7 @@ campaignController.$inject = ['apiFactory'];
 		}
 
 
-	function userController () {
+	function userController (apiFactory) {
 		var uCtrl = this;
 		console.log('userController online, human.');
 
@@ -75,9 +76,8 @@ campaignController.$inject = ['apiFactory'];
 				.then(function(response){
 					console.log('pullUser response: ', response)
 					uCtrl.currentUser = response.data;
-
 				});
 		}
-
+		uCtrl.pullUser()
 
 	}

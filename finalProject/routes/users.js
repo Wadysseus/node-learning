@@ -5,18 +5,18 @@ var User = require('../models/user');
 
 module.exports = {
     get : (req, res) => {
+        // console.log(req.session)
+        // res.end();
         // Read
-        User.find({})
-            .populate('users') // Property name of a PC doc we want to populate
-            .exec(function(err, users){
-                res.json(users);
-            }); // exec gives us a place to pass in the callback function find used to take.  Like a 'then' method for mongoose
+        User.findOne({ _id : req.session.passport.user}, function(err, user){
+            res.json(user);
+        }); // exec gives us a place to pass in the callback function find used to take.  Like a 'then' method for mongoose
     },
 
-    // userID : (req, res) => {
-    //     var results = User.findUser( req.params.id );
-    //     res.json( results.length > 0 ? results : 'User not found !| BEEP BOOP' );
-    // },
+    findUserID : (req, res) => {
+        var results = User.findUser( req.params.id );
+        res.json( results.length > 0 ? results : 'User not found !| BEEP BOOP' );
+    },
 
     upsert : (req, res) =>{
         // Create / Update

@@ -65,8 +65,8 @@ module.exports = (app) => {
     app.post('/api/campaigns/:id', cCtrl.upsert); // Update
     
     // User Routes
-    // app.get('/api/user/', uCtrl.get);
-    // app.get('/api/user/:id', uCtrl.get);
+    app.get('/api/user/', uCtrl.get);
+    app.get('/api/user/:id', uCtrl.get);
 }
 
     // -=-===-=--=-===-=--=-===-=-DREW CODE TO FIGGER OUT?-=-===-=--=-===-=--=-===-=-

@@ -44,6 +44,7 @@ angular.module('crAPI')
 	        createPC: createPC,
 	        retrieveCampaigns    : retrieveCampaigns,
 	        createCampaign  : createCampaign,
+	        retrieveUser : retrieveUser,
 	    }
 
 	}

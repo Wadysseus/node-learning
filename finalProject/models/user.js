@@ -10,19 +10,15 @@ var userSchema = mongoose.Schema({
     }
 });
 
-function findUser (userID){
-	console.log('models/user - findUser fired')
-	return users.filter(function(user){
-		return user._id === id
-	})
-}
 
 
 // var userExport = mongoose.model('user', userSchema);
 
+module.exports = mongoose.model('user', userSchema);
+
 // export the model
-module.exports = {
-user : mongoose.model('user', userSchema),
-findUser : findUser,
-}// Our entrypoint into the characters collection in the DB
-// users
+// module.exports = {
+// user : mongoose.model('user', userSchema),
+// findUser : findUser,
+// }// Our entrypoint into the characters collection in the DB
+// // users

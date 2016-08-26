@@ -44,7 +44,7 @@ app.use( app.get('session') ); //W Ensuring that the app will always use 'sessio
 
 app.use( passport.initialize() ); // Hooks into app
 app.use( passport.session() ); // Hooks into sessions
-app.use (flash());
+app.use (flash()); // for debugging error messages with google passport login
 
 // cookies are strings. strings are "SERIAL" data.
 passport.serializeUser(function(user, done) {
@@ -67,9 +67,9 @@ passport.use(new GoogleStrategy({
     console.log('PROFILE', profile);
 
     // Attempt to see if the user exists already in the DB
-    User.find({googleid : profile.id}, function(err, foundUser){
+    User.findOne({googleid : profile.id}, function(err, foundUser){
         console.log(1)
-        if(!foundUser[0]){
+        if(!foundUser){
             console.log(2)
             var newOne =  new User({
                 googleid : profile.id,
@@ -86,7 +86,7 @@ passport.use(new GoogleStrategy({
         }
         else{
             // User already exists, pass them off to passport
-            cb(null, foundUser[0])
+            cb(null, foundUser)
         }
 
     })
