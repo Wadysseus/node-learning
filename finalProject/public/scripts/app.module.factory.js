@@ -13,6 +13,24 @@ angular.module('crAPI')
 	        return $http.post('/api/pcs', pcData)
 	    }
 
+	    // function retrieveOnePC (query) {
+	    // 	console.log('retrieveOnePC: ', query);
+     //        return $http.get('/api/pcs/' + query);
+     //    }
+
+	    function retrieveOnePC (query) {
+	    	function querystring(queryObj) {
+			    var str = '?';
+			    for(var key in queryObj) {
+			        str += key +'='+ encodeURIComponent(queryObj[key]) + '&';
+			    }
+			    return str.slice(0,-1);
+			    // return str;
+				}
+			console.log('querystring: ', querystring(query));
+            return $http.get('/api/pcs' + querystring(query));
+        }
+
 	    function retrieveCampaigns (){
 	        return $http.get('/api/campaigns')
 	    }
@@ -38,13 +56,19 @@ angular.module('crAPI')
 	    	return $http.get('/api/user')
 	    }
 
+
+
+
 	    // This return value is exactly what we gain access to in the controller
 	    return {
-	        retrievePCs : retrievePCs,
-	        createPC: createPC,
-	        retrieveCampaigns    : retrieveCampaigns,
-	        createCampaign  : createCampaign,
-	        retrieveUser : retrieveUser,
+	        retrievePCs 		: retrievePCs,
+	        createPC			: createPC,
+	        retrieveOnePC		: retrieveOnePC,
+	        retrieveCampaigns   : retrieveCampaigns,
+	        createCampaign  	: createCampaign,
+	        retrieveUser 		: retrieveUser,
+	        
 	    }
 
 	}
+

@@ -6,10 +6,11 @@ var PC = require('../models/pc');
 module.exports = {
     get : (req, res) => {
         // Read
+        // console.log('req: ', req)
         if(req.params.id){
             // Find One
             PC.findOne({ _id : req.params.id }, function(err, pc){
-                console.log(pc);
+                console.log('/routes/pcs/ get', req.params);
                 res.json(pc);
             });
         } else {

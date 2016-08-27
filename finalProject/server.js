@@ -80,7 +80,6 @@ passport.use(new GoogleStrategy({
 
             newOne.save(function(err, savedUser){
                 // User didn't exist before, now that they do, send them to passport
-                // var savedUser = {googleid : 'butts', name : 'biggerButts', id: 123};
                 cb(null, savedUser);
                 console.log(3, savedUser)
                 console.log('Yes, this is error', err)

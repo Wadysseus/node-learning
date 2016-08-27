@@ -37,7 +37,15 @@ userController.$inject = ['apiFactory'];
 				});
 		}
 
-
+		pcCtrl.pullOnePC = (req) => {
+			console.log("Searching taverns for that one special PC...", req)
+			apiFactory
+				.retrieveOnePC(req)
+				.then(function(response){
+					console.log("grabOnePC response: ", req)
+					pcCtrl.currentPC = response.data;
+				})
+		}
 	}
 // End of pcController 
 
