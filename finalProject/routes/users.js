@@ -5,7 +5,7 @@ var User = require('../models/user');
 
 module.exports = {
     get : (req, res) => {
-        // console.log(req.session)
+        console.log('req.session: ', req.session)
         // res.end();
         // Read
         User.findOne({ _id : req.session.passport.user}, function(err, user){

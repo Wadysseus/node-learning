@@ -21,14 +21,13 @@ angular.module('crAPI')
 	    function retrieveOnePC (query) {
 	    	function querystring(queryObj) {
 			    var str = '?';
-			    for(var key in queryObj) {
-			        str += key +'='+ encodeURIComponent(queryObj[key]) + '&';
-			    }
-			    return str.slice(0,-1);
+				str += encodeURIComponent(queryObj);
+			    
+			    return str;
 			    // return str;
 				}
 			console.log('querystring: ', querystring(query));
-            return $http.get('/api/pcs' + querystring(query));
+            return $http.get('/api/pcs/' + querystring(query));
         }
 
 	    function retrieveCampaigns (){

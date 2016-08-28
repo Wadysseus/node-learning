@@ -20,7 +20,7 @@ angular.module('crAPI', ['ngRoute'])
 		$routeProvider.when( '/campaignList', {
 	      templateUrl: '/partials/campaignList.html'
 	    })
-		$routeProvider.when( '/api/pcs/:id', {
+		$routeProvider.when( '/api/pcs/:pc_id', {
 	      templateUrl: '/partials/pcView.html'
 	    })
 	    // default route //

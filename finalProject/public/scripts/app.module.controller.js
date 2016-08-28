@@ -43,8 +43,19 @@ userController.$inject = ['apiFactory'];
 				.retrieveOnePC(req)
 				.then(function(response){
 					console.log("grabOnePC response: ", req)
-					pcCtrl.currentPC = response.data;
-				})
+					var info = response.data
+					for (var i=0;i < info.length; i++){
+						if (info[i]._id != req){
+							console.log(info[i] + " is not the right one!")
+						} else if (info[i]._id == req) {
+							pcCtrl.currentPC = info[i];
+							console.log('pcCtrl.currentPC: ', pcCtrl.currentPC);
+							return pcCtrl.currentPC;
+						}
+
+					// pcCtrl.currentPC = response.data;
+				}
+			})
 		}
 	}
 // End of pcController 
@@ -91,5 +102,7 @@ userController.$inject = ['apiFactory'];
 				});
 		}
 		uCtrl.pullUser()
+
+
 
 	}

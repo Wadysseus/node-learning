@@ -11,6 +11,7 @@ var pcSchema = mongoose.Schema({
             ref  : 'campaign' // Collection name as MONGOOSE understands it - first arg to mongoose.model
     },
     inventory: 		{type: Array},
+    hitPoints:      {type: Number, default: 0},
     player: 		{
     		type: mongoose.Schema.ObjectId,
     		ref : 'user'

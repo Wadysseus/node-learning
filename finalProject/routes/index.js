@@ -8,6 +8,19 @@ var passport = require('passport');
 module.exports = (app) => {
 	
     // Passport Routes
+// Might work? -=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=-
+    // app.param('user_id', function(req, res, next, user_id) {
+    //   // typically we might sanity check that user_id is of the right format
+    //   uCtrl.find(user_id, function(err, user) {
+    //     if (err) return next(err);
+    //     if (!user) return next(404);
+     
+    //     req.user = user;
+    //     next()
+    //   });
+    // });
+// -=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-
+
     app.get('/auth/google',
     passport.authenticate('google', { scope: ['profile'] })); // Route that takes you to the google sign in page
 
@@ -19,7 +32,7 @@ module.exports = (app) => {
      }),  // 
     function(req, res) {
         // Successful authentication, redirect home.
-        res.redirect('/profile'); //res.redirect('/profile/:id');
+        res.redirect('/profile/'); //res.redirect('/profile/:id');  <-- Need to figure out how to get this working
     }); // Where google redirects you when the user is done signing in
 
 	app.get('/', (req,res) => {
@@ -54,21 +67,44 @@ module.exports = (app) => {
 
 
 
+
     // PC Routes
     app.get('/api/pcs', pcCtrl.get);
     app.post('/api/pcs', pcCtrl.upsert);
-    app.get('/api/pcs/:id', pcCtrl.get); // Find One
+    app.get('/api/pcs/:pc_id', pcCtrl.get); // Find One
     
     // Campaign Routes
     app.get('/api/campaigns', cCtrl.get); // Find Many
-    app.get('/api/campaigns/:id', cCtrl.get); // Find One
+    app.get('/api/campaigns/:campaign_id', cCtrl.get); // Find One
     app.post('/api/campaigns', cCtrl.upsert); // Create
-    app.post('/api/campaigns/:id', cCtrl.upsert); // Update
+    app.post('/api/campaigns/:campaign_id', cCtrl.upsert); // Update
     
     // User Routes
     app.get('/api/user/', uCtrl.get);
-    app.get('/api/user/:id', uCtrl.get);
+    app.get('/api/user/:user_id', uCtrl.get);
+
+
 }
+
+
+
+// Sample code from Dr. Internet:
+
+
+
+// app.get('/users/:user_id/profile_url', function(req, res, next) {
+//   res.json('cdn.example.com/' + req.user.profile_url);
+// });
+ 
+// app.get('/users/:user_id/activities', function(req, res, next) {
+//   res.json(req.user.activities);
+// });
+ 
+// app.get('/users/:user_id/friends', function(req, res, next) {
+//   res.json(req.user.friends);
+// });
+
+
 
     // -=-===-=--=-===-=--=-===-=-DREW CODE TO FIGGER OUT?-=-===-=--=-===-=--=-===-=-
 

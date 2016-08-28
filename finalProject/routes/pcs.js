@@ -31,7 +31,7 @@ module.exports = {
             // No id in the url, create a new document
             var newPC = new PC(req.body);
             console.log('Yes this is req.session.passport', req.session.passport)
-            newPC.player = req.user._id;
+            newPC.player = req.session.passport.user;
             // Save character to DB
             newPC.save(function(err, pc){
                 if(err){

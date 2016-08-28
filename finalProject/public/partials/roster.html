@@ -15,7 +15,7 @@
                                                 <div ng-repeat="pc in pcCtrl.pcList track by $index" class="col-xs-12">
                                                     <p>~PC {{$index}}~</p>
                                                     <a type="button" class="btn btn-sm btn-warning profileLinks" 
-                                                    ng-href="#/api/pcs/:id" 
+                                                    ng-href="#/api/pcs/:pc_id" 
                                                     ng-click="pcCtrl.pullOnePC(pcCtrl.pcList[$index]._id)"
                                                     >{{ pc.name }} the level {{ pc.level }} {{ pc.race }} {{ pc.characterClass }}</a>
                                                     <!-- Can put alt text in here once I change these to portrait <img>s.  alt="{{pc.name}}'s profile"-->
