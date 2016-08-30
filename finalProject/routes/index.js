@@ -9,16 +9,16 @@ module.exports = (app) => {
 	
     // Passport Routes
 // Might work? -=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=-
-    // app.param('user_id', function(req, res, next, user_id) {
-    //   // typically we might sanity check that user_id is of the right format
-    //   uCtrl.find(user_id, function(err, user) {
-    //     if (err) return next(err);
-    //     if (!user) return next(404);
+    app.param('user_id', function(req, res, next, user_id) {
+      // typically we might sanity check that user_id is of the right format
+      uCtrl.find(user_id, function(err, user) {
+        if (err) return next(err);
+        if (!user) return next(404);
      
-    //     req.user = user;
-    //     next()
-    //   });
-    // });
+        req.user = user;
+        next()
+      });
+    });
 // -=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-===-=--=-
 
     app.get('/auth/google',
@@ -72,6 +72,17 @@ module.exports = (app) => {
     app.get('/api/pcs', pcCtrl.get);
     app.post('/api/pcs', pcCtrl.upsert);
     app.get('/api/pcs/:pc_id', pcCtrl.get); // Find One
+        app.param('pc_id', function(req, res, next, pc_id) {
+      // typically we might sanity check that pc_id is of the right format
+      uCtrl.find(pc_id, function(err, pc) {
+        if (err) return next(err);
+        if (!pc) return next(404);
+     
+        req.pc = pc;
+        console.log('req.pc here: ', req.pc) // not seeing this in terminal or console
+        next()
+      });
+    });
     
     // Campaign Routes
     app.get('/api/campaigns', cCtrl.get); // Find Many

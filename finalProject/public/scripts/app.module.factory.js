@@ -55,8 +55,22 @@ angular.module('crAPI')
 	    	return $http.get('/api/user')
 	    }
 
+	    var sampleData = [];
 
+	    function samplePC () {
+	    	console.info('samplePC ready to go')
+	    	var sPC = this;
 
+	    	this.name 			= 'Raphael';
+	    	this.race 			= 'half-shmelven';
+	    	this.characterClass = 'Sitari warrior';
+    		this.level	 		= 12;
+    		// this.campaign 		= {"type" : mongoose.Schema.ObjectID, "ref" : 'campaign'};
+    		this.inventory		= ["Potion of Gorgon Smelting", "Wooden Pickle", "Tenser's Censer of Sensors"];       
+		    this.hitPoints      = 56;
+    		// this.player			= {"type" : mongoose.Schema.ObjectID, "ref" : 'user'}; 
+    		sampleData.push(this);
+	    }
 
 	    // This return value is exactly what we gain access to in the controller
 	    return {
@@ -66,7 +80,8 @@ angular.module('crAPI')
 	        retrieveCampaigns   : retrieveCampaigns,
 	        createCampaign  	: createCampaign,
 	        retrieveUser 		: retrieveUser,
-	        
+	        samplePC			: samplePC,
+	        sampleData			: sampleData,
 	    }
 
 	}

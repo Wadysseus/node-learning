@@ -57,6 +57,16 @@ userController.$inject = ['apiFactory'];
 				}
 			})
 		}
+		pcCtrl.fakePullPC = () => {
+			new apiFactory.samplePC()
+			pcCtrl.currentPC = apiFactory.sampleData[0];
+		}
+
+		pcCtrl.addItem = (itemToAdd) => {
+			console.log('itemToAdd: ', itemToAdd)
+			pcCtrl.currentPC.inventory.push()
+		}
+
 	}
 // End of pcController 
 
